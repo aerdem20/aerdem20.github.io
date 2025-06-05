@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>CatchAndGuide - Find Your Perfect Fishing Guide</title>
+  <meta name="description" content="Connect with expert fishing guides across the USA. Book trips, learn about species, and find seasonal hotspots.">
+  <meta name="keywords" content="fishing guide, fishing trips, bass fishing, fly fishing, trout, salmon, fishing map, fishing calendar">
+  <meta name="author" content="CatchAndGuide Team">
+  <meta property="og:title" content="CatchAndGuide - Fishing Made Easy">
+  <meta property="og:description" content="Connect with expert fishing guides across the USA. Book trips, learn about species, and find seasonal hotspots.">
+  <meta property="og:image" content="https://picsum.photos/1200/600?random=1">
+  <meta property="og:url" content="https://catchandguide.com">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="CatchAndGuide - Fishing Made Easy">
+  <meta name="twitter:description" content="Connect with expert fishing guides across the USA. Book trips, learn about species, and find seasonal hotspots.">
+  <meta name="twitter:image" content="https://picsum.photos/1200/600?random=1">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text x='50' y='50' font-size='80' text-anchor='middle' dominant-baseline='central' fill='blue'>🎣</text></svg>">
+
+  <style>
+    :root {
+      --primary: #0077be; 
+      --secondary: #005f99;
+      --accent: #ff6b6b;
+      --bg: #f4f9fc;
+      --card: #ffffff;
+      --text: #333;
+    }
+
+    .dark-mode {
+      --bg: #121212;
+      --card: #1e1e1e;
+      --text: #f0f0f0;
+      --primary: #00aaff;
+      --secondary: #0077cc;
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      margin: 0;
+      padding: 0;
+    }
+
+    header {
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      color: white;
+      padding: 2rem;
+      text-align: center;
+      position: relative;
+    }
+
+    .logo {
+      font-size: 2.5rem;
+      font-weight: bold;
+    }
+
+    nav {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+      margin-top: 1rem;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: 500;
+      transition: 0.3s;
+    }
+
+    nav a:hover {
+      color: #ffdd57;
+    }
+
+    .hero {
+      background: url('https://picsum.photos/1600/600?grayscale') no-repeat center/cover;
+      padding: 4rem 2rem;
+      text-align: center;
+      color: white;
+      position: relative;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+    }
+
+    .btn {
+      display: inline-block;
+      margin-top: 1rem;
+      padding: 0.8rem 1.5rem;
+      background: white;
+      color: var(--primary);
+      border-radius: 30px;
+      font-weight: bold;
+      text-decoration: none;
+      transition: 0.3s;
+    }
+
+    .btn:hover {
+      background: var(--accent);
+      color: white;
+    }
+
+    section {
+      max-width: 1200px;
+      margin: 4rem auto;
+      padding: 0 1rem;
+    }
+
+    h2 {
+      text-align: center;
+      font-size: 2rem;
+      margin-bottom: 2rem;
+      color: var(--secondary);
+    }
+
+    .guides, .calendar, .species, .faq {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .card {
+      background: var(--card);
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      padding: 1.5rem;
+      transition: 0.3s;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+    }
+
+    .map-container {
+      height: 500px;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+
+    details {
+      margin-bottom: 1rem;
+      padding: 1rem;
+      background: #f0f0f0; 
+      border-radius: 8px;
+      cursor: pointer;
+    }
+
+    summary {
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    form {
+      background: white;
+      padding: 2rem;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+
+    input, textarea, select {
+      width: 100%;
+      padding: 0.8rem;
+      margin-bottom: 1rem;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-family: inherit;
+    }
+
+    button {
+      background: var(--primary);
+      color: white;
+      border: none;
+      padding: 0.8rem 1.5rem;
+      border-radius: 30px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    button:hover {
+      background: var(--secondary);
+    }
+
+    footer {
+      background: #222;
+      color: white;
+      text-align: center;
+      padding: 2rem 1rem;
+      margin-top: 4rem;
+    }
+
+    #darkModeToggle {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      background: transparent;
+      border: none;
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+
+    @media (max-width: 600px) {
+      nav {
+        flex-direction: column;
+        gap: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <button id="darkModeToggle">🌙</button>
+    <div class="logo">🎣 CatchAndGuide</div>
+    <nav>
+      <a href="#guides">Guides</a>
+      <a href="#map">Hotspots</a>
+      <a href="#calendar">Seasonal Guide</a>
+      <a href="#species">Species</a>
+      <a href="#faq">FAQ</a>
+      <a href="#apply">Apply</a>
+    </nav>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-content">
+      <h1>Find Your Perfect Fishing Guide</h1>
+      <p>Connect with expert guides across the USA and plan your next adventure.</p>
+      <a href="#guides" class="btn">Browse Guides</a>
+    </div>
+  </section>
+
+  <!-- Search Bar -->
+  <div style="text-align:center; margin: 2rem 0;">
+    <input type="text" id="search" placeholder="Search by species or location..." onkeyup="filterGuides()" style="padding: 0.8rem; width: 80%; max-width: 500px; border-radius: 30px; border: 1px solid #ccc;">
+  </div>
+
+  <!-- Featured Guides -->
+  <section id="guides">
+    <h2>Featured Guides</h2>
+    <div class="guides">
+      <div class="card">
+        <h3>John Smith – Bass Fishing</h3>
+        <p><strong>Locations:</strong> Florida, Texas</p>
+        <p><strong>Rates:</strong> $150/hour</p>
+        <a href="https://calendly.com/your-link"  target="_blank" class="btn">Book Now</a>
+      </div>
+      <div class="card">
+        <h3>Sarah Lee – Fly Fishing</h3>
+        <p><strong>Locations:</strong> Colorado, Montana</p>
+        <p><strong>Rates:</strong> $180/hour</p>
+        <a href="https://calendly.com/your-link"  target="_blank" class="btn">Book Now</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Interactive Map -->
+  <section>
+    <h2>Fishing Hotspots Across the USA</h2>
+    <div class="map-container" id="map"></div>
+  </section>
+
+  <!-- Monthly Calendar -->
+  <section id="calendar">
+    <h2>Seasonal Fishing Guide</h2>
+    <div class="calendar">
+      <div class="card">
+        <h3>January</h3>
+        <p>Ice fishing for Walleye in Minnesota</p>
+      </div>
+      <div class="card">
+        <h3>March</h3>
+        <p>Bass spawning in Florida lakes</p>
+      </div>
+      <div class="card">
+        <h3>June</h3>
+        <p>Fly fishing for trout in Montana</p>
+      </div>
+      <div class="card">
+        <h3>September</h3>
+        <p>Offshore tuna in North Carolina</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Species Guide -->
+  <section id="species">
+    <h2>Target Species Guide</h2>
+    <div class="species">
+      <div class="card">
+        <h3>Largemouth Bass</h3>
+        <p><strong>Bite Window:</strong> Early morning & dusk</p>
+        <p><strong>Bait:</strong> Worms, crankbaits</p>
+        <p><strong>Best Season:</strong> Spring – Fall</p>
+      </div>
+      <div class="card">
+        <h3>Rainbow Trout</h3>
+        <p><strong>Bite Window:</strong> Mid-morning</p>
+        <p><strong>Bait:</strong> Nymphs, dry flies</p>
+        <p><strong>Best Season:</strong> Summer</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section id="faq">
+    <h2>FAQ – Ask the Guide</h2>
+    <div class="faq">
+      <details>
+        <summary>What gear do I need for bass fishing?</summary>
+        <p>A medium-heavy rod, 10–20lb line, and soft plastics or crankbaits.</p>
+      </details>
+      <details>
+        <summary>When is the best time to fly fish for trout?</summary>
+        <p>Mornings during summer months are ideal.</p>
+      </details>
+    </div>
+  </section>
+
+  <!-- Apply Section -->
+  <section id="apply">
+    <h2>Join Our Community</h2>
+    <div class="guides">
+      <div class="card">
+        <h3>For Guides</h3>
+        <p>Apply to list your services and connect with anglers worldwide.</p>
+        <a href="https://forms.gle/YourGoogleFormLink"  target="_blank" class="btn">Apply Now</a>
+      </div>
+      <div class="card">
+        <h3>For Anglers</h3>
+        <p>Sign up to receive fishing tips, seasonal updates, and guide alerts.</p>
+        <form name="angler-signup" method="POST" data-netlify="true">
+          <input type="hidden" name="form-name" value="angler-signup" />
+          <div style="display:none;">
+            <label>Don’t fill this out: <input name="bot-field" /></label>
+          </div>
+          <input type="email" name="email" placeholder="Your email" required />
+          <button type="submit">Subscribe</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2025 CatchAndGuide.com | Built with ❤️ for anglers and guides</p>
+    <p>
+      <a href="/privacy-policy">Privacy Policy</a> |
+      <a href="/terms">Terms of Service</a>
+    </p>
+  </footer>
+
+  <!-- Map Script -->
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script> 
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/> 
+
+  <script>
+    // Initialize Map
+    const map = L.map('map').setView([39.8283, -98.5795], 4);
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',  {
+      attribution: '&copy; OpenStreetMap contributors'
+    }).addTo(map);
+
+    // Fishing Hotspots
+    const hotspots = [
+      {
+        name: "Lake Okeechobee, FL",
+        species: "Largemouth Bass",
+        season: "January–April",
+        coords: [27.0964, -81.1516]
+      },
+      {
+        name: "Yellowstone River, MT",
+        species: "Rainbow Trout",
+        season: "May–September",
+        coords: [44.7356, -110.4915]
+      },
+      {
+        name: "Kenai River, AK",
+        species: "King Salmon",
+        season: "May–July",
+        coords: [60.5601, -151.2162]
+      }
+    ];
+
+    // Add Markers
+    hotspots.forEach(hotspot => {
+      const popup = `<strong>${hotspot.name}</strong><br>
+                     Target: ${hotspot.species}<br>
+                     Best Time: ${hotspot.season}`;
+      L.marker(hotspot.coords).addTo(map).bindPopup(popup);
+    });
+
+    // Form Validation
+    function handleSubmit(e) {
+      e.preventDefault();
+      const email = document.querySelector('[name="email"]').value.trim();
+      if (!email || !/^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/.test(email)) {
+        alert('Please enter a valid email address.');
+        return;
+      }
+      alert('Thanks for subscribing!');
+      document.querySelector('form').reset();
+    }
+
+    // Dark Mode
+    const toggle = document.getElementById('darkModeToggle');
+    toggle.addEventListener('click', () => {
+      document.body.classList.toggle('dark-mode');
+      toggle.textContent = document.body.classList.contains('dark-mode') ? '☀️' : '🌙';
+      localStorage.setItem('darkMode', document.body.classList.contains('dark-mode'));
+    });
+
+    if (localStorage.getItem('darkMode') === 'true') {
+      document.body.classList.add('dark-mode');
+      toggle.textContent = '☀️';
+    }
+
+    // AI Search
+    function filterGuides() {
+      const input = document.getElementById("search").value.toLowerCase();
+      const cards = document.querySelectorAll(".guides .card");
+      cards.forEach(card => {
+        const text = card.innerText.toLowerCase();
+        card.style.display = text.includes(input) ? "block" : "none";
+      });
+    }
+  </script>
+</body>
+</html>
