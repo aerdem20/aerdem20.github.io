@@ -422,42 +422,65 @@
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script> 
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/> 
 
-  <script>
-    // Initialize Map
-    const map = L.map('map').setView([39.8283, -98.5795], 4);
-    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',  {
-      attribution: '&copy; OpenStreetMap contributors'
-    }).addTo(map);
+<script>
+  // Initialize Map
+  const map = L.map('map').setView([28.5383, -81.3821], 5); // Centered on Florida
 
-    // Fishing Hotspots
-    const hotspots = [
-      {
-        name: "Lake Okeechobee, FL",
-        species: "Largemouth Bass",
-        season: "January–April",
-        coords: [27.0964, -81.1516]
-      },
-      {
-        name: "Yellowstone River, MT",
-        species: "Rainbow Trout",
-        season: "May–September",
-        coords: [44.7356, -110.4915]
-      },
-      {
-        name: "Kenai River, AK",
-        species: "King Salmon",
-        season: "May–July",
-        coords: [60.5601, -151.2162]
-      }
-    ];
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',  {
+    attribution: '&copy; OpenStreetMap contributors'
+  }).addTo(map);
 
-    // Add Markers
-    hotspots.forEach(hotspot => {
-      const popup = `<strong>${hotspot.name}</strong><br>
-                     Target: ${hotspot.species}<br>
-                     Best Time: ${hotspot.season}`;
-      L.marker(hotspot.coords).addTo(map).bindPopup(popup);
-    });
+  // Fishing Hotspots (Freshwater + Saltwater)
+  const hotspots = [
+    // Freshwater
+    {
+      name: "Lake Okeechobee, FL",
+      species: "Largemouth Bass",
+      season: "January–April",
+      coords: [27.0964, -81.1516]
+    },
+    {
+      name: "Yellowstone River, MT",
+      species: "Rainbow Trout",
+      season: "May–September",
+      coords: [44.7356, -110.4915]
+    },
+    {
+      name: "Kenai River, AK",
+      species: "King Salmon",
+      season: "May–July",
+      coords: [60.5601, -151.2162]
+    },
+
+    // Saltwater
+    {
+      name: "Florida Keys, FL",
+      species: "Tarpon",
+      season: "April–July",
+      coords: [24.5688, -81.3476]
+    },
+    {
+      name: "Outer Banks, NC",
+      species: "Bluefin Tuna",
+      season: "June–November",
+      coords: [35.7588, -75.5365]
+    },
+    {
+      name: "Gulf Shores, AL",
+      species: "Red Snapper",
+      season: "May–October",
+      coords: [30.3370, -88.2100]
+    }
+  ];
+
+  // Add Markers
+  hotspots.forEach(hotspot => {
+    const popup = `<strong>${hotspot.name}</strong><br>
+                   Target: ${hotspot.species}<br>
+                   Best Time: ${hotspot.season}`;
+    L.marker(hotspot.coords).addTo(map).bindPopup(popup);
+  });
+</script>
 
     // Form Validation
     function handleSubmit(e) {
